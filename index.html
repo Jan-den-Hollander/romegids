@@ -1,0 +1,672 @@
+<!--
+================================================================================
+  © Jan den Hollander — jandenhollander@duck.com
+  GitHub: https://github.com/Jan-den-Hollander
+  Projectnaam: Historische Gids van Rome
+  Versie: 1.0 | Datum: 2026-04-20
+
+  LICENTIE / LICENSE (NL | EN | IT)
+  ──────────────────────────────────────────────────────────────────────────────
+  NL: Dit werk is auteursrechtelijk beschermd. Het mag vrij worden gebruikt,
+  gedeeld en verspreid, uitsluitend voor niet-commerciële doeleinden en
+  uitsluitend in ongewijzigde vorm, met vermelding van de oorspronkelijke
+  auteur. Commercieel gebruik, wijziging, verkoop of integratie in betaalde
+  producten of diensten is uitdrukkelijk verboden zonder schriftelijke
+  toestemming van de auteur. Hulp is en blijft gratis.
+
+  EN: This work is protected by copyright. It may be freely used, shared and
+  distributed for non-commercial purposes only, in unmodified form, with
+  attribution to the original author. Commercial use, modification, sale or
+  integration into paid products or services is strictly prohibited without
+  prior written consent of the author. Help is and remains free.
+
+  IT: Quest'opera è protetta da diritto d'autore. Può essere liberamente
+  utilizzata, condivisa e distribuita esclusivamente per scopi non commerciali,
+  nella sua forma originale e non modificata, con attribuzione all'autore
+  originale. L'uso commerciale, la modifica, la vendita o l'integrazione in
+  prodotti o servizi a pagamento sono espressamente vietati senza il consenso
+  scritto dell'autore. L'aiuto è e rimane gratuito.
+
+  Originele broncode / Original source / Fonte originale:
+  https://github.com/Jan-den-Hollander
+
+  Alle rechten voorbehouden / All rights reserved / Tutti i diritti riservati
+  © Jan den Hollander
+================================================================================
+-->
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historische Gids van Rome - Compleet</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        nav {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+        nav h2 {
+            margin-top: 0;
+            color: #8b0000;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            column-count: 2;
+        }
+        nav li {
+            margin-bottom: 10px;
+        }
+        nav a {
+            text-decoration: none;
+            color: #0066cc;
+            font-weight: bold;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        .section {
+            background: #fff;
+            padding: 30px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .label {
+            color: #888;
+            font-style: italic;
+            text-transform: uppercase;
+            font-size: 0.9em;
+            margin-bottom: 5px;
+            display: block;
+        }
+        h1, h2, h3 {
+            color: #8b0000;
+            border-bottom: 2px solid #8b0000;
+            padding-bottom: 5px;
+        }
+        
+        .audio-controls {
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border: 1px solid #eee;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .audio-controls button {
+            background: #8b0000;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1em;
+            flex: 1;
+            max-width: 150px;
+        }
+        
+        .audio-controls button:hover {
+            background: #a00000;
+        }
+        
+        .audio-controls input[type="range"] {
+            width: 100%;
+            cursor: pointer;
+        }
+
+        .back-to-top {
+            display: inline-block;
+            margin-top: 20px;
+            font-size: 0.8em;
+            text-decoration: none;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <h2>Inhoud</h2>
+        <ul>
+            <li><a href="#san-pietro">Basilica di San Pietro</a></li>
+            <li><a href="#castello">Castel Sant'Angelo</a></li>
+            <li><a href="#traiana">Colonna Traiana</a></li>
+            <li><a href="#colosseum">Combi Colosseum</a></li>
+            <li><a href="#trevi">Fontana di Trevi</a></li>
+            <li><a href="#popolo">Piazza del Popolo</a></li>
+            <li><a href="#augusto">Mausoleo di Augusto</a></li>
+            <li><a href="#pace">Monumento alla Pace</a></li>
+            <li><a href="#pantheon">Pantheon di Agrippa</a></li>
+            <li><a href="#spagna">Piazza di Spagna</a></li>
+            <li><a href="#piazza-san-pietro">Piazza San Pietro</a></li>
+            <li><a href="#ponte">Ponte Sant'Angelo</a></li>
+            <li><a href="#trinita">Trinità dei Monti</a></li>
+        </ul>
+    </nav>
+
+    <div id="san-pietro" class="section">
+        <span class="label">Nederlandse Tekst</span>
+        <h2>Basilica di San Pietro</h2>
+        <div class="audio-controls">
+            <button onclick="playSection('san-pietro')">▶ Play</button>
+            <button onclick="stopSpeech()">■ Stop</button>
+            <input type="range" id="seek-san-pietro" value="0" min="0" max="100" onchange="seekSpeech('san-pietro', this.value)">
+        </div>
+        <div class="text-content">
+            <p>Sint-Pietersbasiliek. De Sint-Pieter is een kerk gebouwd in renaissancestijl, gelegen in Vaticaanstad ten westen van de rivier de Tiber. De centrale koepel domineert de skyline van Rome. De basiliek is toegankelijk via het Sint-Pietersplein, omringd door hoge colonnades. De gevel van de basiliek strekt zich uit langs het einde van het plein en is toegankelijk via een trap waarop twee beelden van 5,55 meter staan van de apostelen Sint-Pieter en Sint-Paulus.</p>
+            <p>De basiliek is kruisvormig, met een verlengd schip in de vorm van een Latijns kruis. De centrale ruimte wordt gedomineerd door een van de grootste koepels ter wereld. De ingang loopt via een narthex, of atrium. Een van de versierde bronzen deuren is de Heilige Deur, die alleen tijdens jubileumjaren wordt geopend.</p>
+            <p><strong>Informatie voor bezoekers:</strong> In de Sint-Pietersbasiliek wordt de kledingcode strikt gehandhaafd. Mannen moeten lange broek dragen en de schouders bedekken; vrouwen mogen geen blote schouders hebben. De toegang tot de hoofdbeuk is gratis, hoewel voor sommige delen, zoals de beklimming van de koepel, een betaling vereist is.</p>
+        </div>
+        <a href="#" class="back-to-top">↑ Terug naar inhoud</a>
+    </div>
+
+    <div id="castello" class="section">
+        <span class="label">Nederlandse Tekst</span>
+        <h2>Castel Sant'Angelo</h2>
+        <div class="audio-controls">
+            <button onclick="playSection('castello')">▶ Play</button>
+            <button onclick="stopSpeech()">■ Stop</button>
+            <input type="range" id="seek-castello" value="0" min="0" max="100" onchange="seekSpeech('castello', this.value)">
+        </div>
+        <div class="text-content">
+            <p>De Engelenburcht, Castel Sant'Angelo. Het Mausoleum van Hadrianus is een fascinerende historische locatie in Rome, Italië. Dit cilindrische gebouw werd in opdracht van de Romeinse keizer Hadrianus als mausoleum voor hemzelf en zijn familie gebouwd en heeft een rijke geschiedenis die eeuwen overspant.</p>
+            
+            <p>Oorspronkelijk gebouwd tussen 134 en 139 na Christus, was het mausoleum een grote structuur met een tuin en een gouden strijdwagen. Het was de laatste rustplaats van Hadrianus, zijn vrouw Sabina en hun geadopteerde zoon Lucius Aelius.</p>
+            
+            <p>Na de oorspronkelijke functie als graf werd het gebouw door de pauzen omgebouwd tot een vesting en kasteel. Het werd een strategisch militair bolwerk en werd in de Aureliaanse Muren geïntegreerd. De imposante aanwezigheid van het kasteel maakte het ooit het hoogste gebouw van Rome.</p>
+            
+            <p>Tegenwoordig is Castel Sant'Angelo een museum dat bezoekers een blik gunt op het historische verleden en de mogelijkheid biedt om de indrukwekkende architectuur te verkennen. Terwijl u door de gangen dwaalt, komen u artefacten tegen die de evolutie van het gebouw laten zien.</p>
+            
+            <p>Het panoramische uitzicht vanaf de top biedt een adembenemend perspectief op de stad. Of u nu een geschiedenisliefhebber bent, een architectuurliefhebber of gewoon een nieuwsgierige reiziger, een bezoek aan Castel Sant'Angelo zal zeker tot uw verbeelding spreken.</p>
+            
+            <p>De legende vertelt dat de aartsengel Michaël boven het mausoleum verscheen en zijn zwaard in de schede stak als teken van het einde van de pest van 590, wat het kasteel zijn huidige naam gaf. De pauzen transformeerden de structuur vanaf de 14e eeuw in een kasteel; paus Nicolaas III verbond het kasteel met de Sint-Pietersbasiliek via een versterkte overdekte gang genaamd de Passetto di Borgo.</p>
+        </div>
+        <a href="#" class="back-to-top">↑ Terug naar inhoud</a>
+    </div>
+
+    <div id="traiana" class="section">
+        <span class="label">Nederlandse Tekst</span>
+        <h2>Colonna Traiana</h2>
+        <div class="audio-controls">
+            <button onclick="playSection('traiana')">▶ Play</button>
+            <button onclick="stopSpeech()">■ Stop</button>
+            <input type="range" id="seek-traiana" value="0" min="0" max="100" onchange="seekSpeech('traiana', this.value)">
+        </div>
+        <div class="text-content">
+            <p>Zuil van Trajanus. De Zuil van Trajanus is niet alleen een opmerkelijk stuk antieke Romeinse architectuur, maar ook een belangrijk historisch monument dat het verhaal vertelt van de militaire campagnes van keizer Trajanus. Met een indrukwekkende hoogte van 30 meter is de zuil een symbool van Romeinse macht. Het ingewikkelde spiraalvormige bas-reliëf toont scènes van strijd en triomf, en biedt een gedetailleerd verslag van de veroveringen van Trajanus.</p>
+            <p>De bouw van de Zuil van Trajanus was een monumentale onderneming, met 18 massieve blokken Carrara-marmer die elk ongeveer 40 ton wogen. De gebeeldhouwde fries slingert 23 keer rond de zuil en toont de artistieke vaardigheid van de oude Romeinse beeldhouwers.</p>
+            <p>Een van de meest fascinerende kenmerken is de interne wenteltrap, bestaande uit 185 treden die naar een panoramisch platform leiden. Vanaf dit observatiepunt kunnen bezoekers genieten van een panoramisch uitzicht over Rome. Het doel van de zuil was drieledig: het markeren van de bergomvang, het huisvesten van de as van de keizer en het herdenken van de verovering van Dacië.</p>
+        </div>
+        <a href="#" class="back-to-top">↑ Terug naar inhoud</a>
+    </div>
+
+    <div id="colosseum" class="section">
+        <span class="label">Nederlandse Tekst</span>
+        <h2>Combi Colosseum</h2>
+        <div class="audio-controls">
+            <button onclick="playSection('colosseum')">▶ Play</button>
+            <button onclick="stopSpeech()">■ Stop</button>
+            <input type="range" id="seek-colosseum" value="0" min="0" max="100" onchange="seekSpeech('colosseum', this.value)">
+        </div>
+        <div class="text-content">
+            <h3>I. Het Colosseum</h3>
+            <p>Het Colosseum: Het amfitheater van de Flavische keizers. Het Colosseum ontstond uit politieke berekening. Na de dood van de gehate tiran Nero wilde zijn opvolger Vespasianus het land teruggeven aan het volk. De bouw begon rond 72 na Christus op de exacte plek van Nero's meer. Door op deze locatie een amfitheater te bouwen zei de nieuwe dynastie: wat een tiran zich heeft toegeëigend, geven wij terug aan de Romeinen. Het werd gefinancierd met de buit van de Joodse Oorlog.</p>
+            
+            <p>Het doel was drieledig: vermaak, sociale controle en machtsvertoon. Het gebouw weerspiegelde de Romeinse hiërarchie: hoe lager je zat, hoe belangrijker je was. De keizer en senatoren zaten op de voorste rij. Een typische dag begon met venationes (jachten op wilde dieren). Het hoofdgerecht waren gladiatorengevechten.</p>
+
+            <p>Kijk naar de open gangen in het midden. Dit was het Hypogeum. Honderden slaven werkten hier om ervoor te zorgen dat de voorstellingen soepel verliepen. Er waren 80 verticale liften die leeuwen en gladiatoren rechtstreeks de arena in brachten, wat voor verrassingseffecten zorgde.</p>
+
+            <p>Na de val van het Romeinse Rijk diende het Colosseum als steengroeve voor anderen monumenten. In de Middeleeuwen woonden adellijke families binnen de muren. In de 18e eeuw verklaarde de paus het gebouw tot gewijde grond vanwege christelijke martelaren.</p>
+
+            <h3>II. De Palatijn</h3>
+            <p>De Palatijn: De bakermat van het rijk. De Palatijn is de meest exclusieve van de zeven heuvels. Volgens de legende vond de wolvin Romulus en Remus in een grot op deze heuvel. Archeologen hebben paalgaten van hutten gevonden uit de 8e eeuw voor Christus. Tijdens de Republikeinse periode woonden hier de rijksten. Maar toen Augustus, de eerste keizer, hier werd geboren en later zijn residentie vestigde, werd de heuvel het domein van de keizers.</p>
+            
+            <p>Bezienswaardigheden: Domus Augustana is het privégedeelte van het keizerlijk paleis met binnenplaatsen en fonteinen. Het Stadion van Domitianus was waarschijnlijk een privétuin waar de keizer kon wandelen. Het Huis van Livia is een van de best bewaarde huizen met fresco's van bijna 2000 jaar oud.</p>
+
+            <h3>III. Forum Romanum</h3>
+            <p>Forum Romanum: Het mijnenveld van de politiek. Deze vallei was oorspronkelijk een onbewoonbaar moeras. Pas na de aanleg van de Cloaca Maxima kon het land worden ontgonnen. Het ontwikkelde zich tot het religieuze en juridische hart van het rijk. Op het Forum was alles politiek. Elke tempel, elk standbeeld en elke boog was een statement.</p>
+            
+            <p>Details: De Curia Julia heeft een sobiere bakstenen buitenkant en een ingelegde marmeren vloer. De Tempel van Vesta bruikte het Heilige Vuur, waarvan men geloofde dat Rome zou vallen als het uitging. De Gouden Mijlpaal was het punt waar alle wegen samenkwamen. De Rostra was het spreekpodium van Rome.</p>
+        </div>
+        <a href="#" class="back-to-top">↑ Terug naar inhoud</a>
+    </div>
+
+    <div id="trevi" class="section">
+        <span class="label">Nederlandse Tekst</span>
+        <h2>Fontana di Trevi</h2>
+        <div class="audio-controls">
+            <button onclick="playSection('trevi')">▶ Play</button>
+            <button onclick="stopSpeech()">■ Stop</button>
+            <input type="range" id="seek-trevi" value="0" min="0" max="100" onchange="seekSpeech('trevi', this.value)">
+        </div>
+        <div class="text-content">
+            <p>De Trevifontein is een prachtig meesterwerk van barokarchitectuur in het hart van Rome. Ontworpen door Nicola Salvi en voltooid in 1762, bereikt deze iconische fontein een indrukwekkende hoogte van 26,3 meter. De Trevifontein is niet alleen een populaire toeristische attractie, maar ook een symbool van de rijke geschiedenis van Rome.</p>
+            <p>Het ontwerp is een waar wonder, met een travertijnen gevel versierd met beelden van Carrara-marmer. De centrale figuur is Oceanus, de god van de zee, op een strijdwagen getrokken door zeepaarden. De algehele compositie getuigt van de vaardigheid van de kunstenaars.</p>
+            <p>Een van de meest fascinerende aspecten is de rijke symboliek. Het thema draait om het concept van water als levensgevende kracht. Het kabbelende water en de dynamische beweging roepen een gevoel van beweging en vitaliteit op.</p>
+            <p>De fontein is prominent in de populaire cultuur verschenen, waaronder in Federico Fellini's La Dolce Vita. De tijdloze schoonheid continue bezoekers van over de hele wereld aan te trekken.</p>
+            <p>Als je voor de fontein staat, omringd door het geluid van vallend water en majesteuze beelden, kun je niet anders dan een gevoel van ontzag ervaren. De Trevifontein is ongetwijfeld de beroemdste en meest gefotografeerde fontein van Rome. Volgens de legende keert degene die een muntje gooit terug naar Rome.</p>
+        </div>
+        <a href="#" class="back-to-top">↑ Terug naar inhoud</a>
+    </div>
+
+    <div id="popolo" class="section">
+        <span class="label">Nederlandse Tekst</span>
+        <h2>La piazza cittadina (Piazza del Popolo)</h2>
+        <div class="audio-controls">
+            <button onclick="playSection('popolo')">▶ Play</button>
+            <button onclick="stopSpeech()">■ Stop</button>
+            <input type="range" id="seek-popolo" value="0" min="0" max="100" onchange="seekSpeech('popolo', this.value)">
+        </div>
+        <div class="text-content">
+            <p>Piazza del Popolo is niet alleen een groot stadsplein in Rome, maar ook een historisch en cultureel monument. De naam komt van de aanwezigheid van populieren in het gebied. Op het plein staat de prachtige kerk van Santa Maria del Popolo. Het plein neemt een speciale plaats in in het hart van Romeinen en bezoekers.</p>
+            <p>Het diende als beginpunt van de Via Flaminia, een cruciale weg naar het noorden. Vóór de spoorwegen was Piazza del Popolo vaak het eerste wat reizigers zagen. Het plein kent echter ook een duistere geschiedenis als locatie van openbare executies.</p>
+            <p>Een van de meest opvallende kenmerken is de Egyptische obelisk van Sety I, verplaatst in 1589 door paus Sixtus V. Deze imposante, 23,2 meter hoge obelisk dateert uit circa 1300 voor Christus. Keizer Augustus bracht hem naar Rome ter herdenking van de verovering van Egypte. De obelisk wordt omringd door vier majestueuze Egyptische leeuwen.</p>
+            <p>Wandel over het plein en bewonder de mix van oude invloeden. Of u nu geschiedenisliefhebber of kunstkenner bent, het plein zal u zeker betoveren met zijn schoonheid en betekenis.</p>
+        </div>
+        <a href="#" class="back-to-top">↑ Terug naar inhoud</a>
+    </div>
+
+    <div id="augusto" class="section">
+        <span class="label">Nederlandse Tekst</span>
+        <h2>Mausoleo di Augusto</h2>
+        <div class="audio-controls">
+            <button onclick="playSection('augusto')">▶ Play</button>
+            <button onclick="stopSpeech()">■ Stop</button>
+            <input type="range" id="seek-augusto" value="0" min="0" max="100" onchange="seekSpeech('augusto', this.value)">
+        </div>
+        <div class="text-content">
+            <p>Het Mausoleum van Augustus is een buitengewoon architectonisch meesterwerk dat getuigt van de macht van het Romeinse Rijk. Gebouwd door de eerste Romeinse keizer Augustus in 28 voor Christus, bevindt dit imposante grafmonument zich in het hart van Rome, op het Campus Martius. Het mausoleum beslaat een oppervlakte gelijk aan meerdere stadsblokken en is een belangrijke historische plek.</p>
+
+            <p>De bouw werd begonnen na Augustus' overwinning in de Slag bij Actium in 31 voor Christus. Het cirkelvormige grondplan bestond uit meerdere concentrische ringen van aarde en baksteen, aan de buitenkant bekleed met travertijn. De structuur werd bekroond door een kegelvormig dak en een kolossaal bronzen beeld van Augustus.</p>
+
+            <p>Bij binnenkomst worden bezoekers verwelkomd door een gang die leidt naar de centrale ruimte, waar drie nissen gouden urnen bevatten met familie-assen. De pilaren zijn versierd met bronzen plaquettes met de Res Gestae Divi Augusti. Rondom ligt een prachtig aangelegd park.</p>
+
+            <p>Het Mausoleum van Augustus is de grootste ronde tomb die ooit bekend is, met een diameter van ongeveer 87 meter. Toen het in 28 voor Christus werd voltooid, was het de grootste tomb van de Romeinse wereld. Na zijn dood bevatte het mausoleum de assen van veel andere keizers en leden van de keizerlijke familie.</p>
+        </div>
+        <a href="#" class="back-to-top">↑ Terug naar inhoud</a>
+    </div>
+
+    <div id="pace" class="section">
+        <span class="label">Nederlandse Tekst</span>
+        <h2>Monumento alla Pace (Ara Pacis)</h2>
+        <div class="audio-controls">
+            <button onclick="playSection('pace')">▶ Play</button>
+            <button onclick="stopSpeech()">■ Stop</button>
+            <input type="range" id="seek-pace" value="0" min="0" max="100" onchange="seekSpeech('pace', this.value)">
+        </div>
+        <div class="text-content">
+            <p>Monument voor de Vrede. De Ara Pacis Augustae, ook bekend als het Monument voor de Vrede, is een prachtig altaar in Rome, gewijd aan Pax, de Romeinse godin van de vrede. In opdracht van de Romeinse Senaat in 13 voor Christus ter herdenking van de terugkeer van keizer Augustus. Het monument is een symbool van welvaart en overvloed.</p>
+            <p>Oorspronkelijk gelegen aan de rand van Rome, werd het altaar in 1938 herplaatst naar het Museo dell'Ara Pacis. Het altaar is omgeven door prachtig gebeeldhouwde muren van Luna-marmer, met gedetailleerde reliëfs van Romeins leven en cultuur. Het onderste register vertoont plantmotieven die rijkdom en voorspoed symboliseren.</p>
+            <p>Als belangrijk onderdeel van de Romeinse burgerreligie dient het als getuigenis van Augustus' macht en invloed. Het monument was ontworpen om zijn visie op vrede en stabiliteit te bevorderen. De Ara Pacis vormt een blijvend eerbetoon aan de idealen van de Romeinse cultuur.</p>
+            <p>Het nieuwe Museo dell'Ara Pacis werd geopend in het voorjaar van 2006, ontworpen door architect Richard Meier. De Ara Pacis is een dominant werk van Romeinse kunst en architectuur dat eeuwenlang verloren was gegaan.</p>
+        </div>
+        <a href="#" class="back-to-top">↑ Terug naar inhoud</a>
+    </div>
+
+    <div id="pantheon" class="section">
+        <span class="label">Nederlandse Tekst</span>
+        <h2>Pantheon di Agrippa</h2>
+        <div class="audio-controls">
+            <button onclick="playSection('pantheon')">▶ Play</button>
+            <button onclick="stopSpeech()">■ Stop</button>
+            <input type="range" id="seek-pantheon" value="0" min="0" max="100" onchange="seekSpeech('pantheon', this.value)">
+        </div>
+        <div class="text-content">
+            <p>Het Pantheon van Agrippa, ook wel simpelweg het Pantheon genoemd, is een opmerkelijk architectonisch meesterwerk in het hart van Rome. Oorspronkelijk gebouwd als een oude Romeinse tempel gewijd aan alle goden, doet het nu dienst als kerk, Santa Maria Rotonda. De geschiedenis gaat terug tot keizer Augustus, toen Marcus Agrippa opdracht gaf tot de bouw.</p>
+
+            <p>Een van de meest opvallende kenmerken is de ronde structuur met een grote portiek van Korinthische granieten zuilen. De ingang leidt naar een rechthoekig voorportaal verbonden met de rotonde, bekroond door een magnifieke betonnen koepel. Het meest iconische kenmerk is de oculus, een centrale opening die natuurlijk licht toelaat.</p>
+
+            <p>De koepel is de grootste ongewapende betonnen koepel ter wereld, een bewijs van oude Romeinse ingenieurskunst. Het interieur is indrukwekkend met marmeren vloeren, weelderige decoraties en kunstwerken. Het Pantheon is door de eeuwen heen opmerkelijk goed bewaard gebleven.</p>
+
+            <p>Het Pantheon is sinds de 7e eeuw in gebruik als christelijke kerk. Tegenwoordig is het een populaire toeristische bestemming met miljoenen jaarlijkse bezoekers. Twee koningen van Italië liggen hier begraven: Vittorio Emanuele II en Umberto I, en ook koningin Margherita.</p>
+        </div>
+        <a href="#" class="back-to-top">↑ Terug naar inhoud</a>
+    </div>
+
+    <div id="spagna" class="section">
+        <span class="label">Nederlandse Tekst</span>
+        <h2>Piazza di Spagna (Roma)</h2>
+        <div class="audio-controls">
+            <button onclick="playSection('spagna')">▶ Play</button>
+            <button onclick="stopSpeech()">■ Stop</button>
+            <input type="range" id="seek-spagna" value="0" min="0" max="100" onchange="seekSpeech('spagna', this.value)">
+        </div>
+        <div class="text-content">
+            <p>Piazza di Spagna is een van de beroemdste pleinen van Rome. Het dankt zijn naam aan het Palazzo di Spagna, de zetel van de Spaanse ambassade. Vlakbij staat de beroemde Zuil van de Onbevlekte Ontvangenis. Het plein ligt in een beroemd gedeelte van Rome, vlakbij Via dei Condotti, Via Frattina en Via del Babuino.</p>
+            <p>In het midden staat de beroemde Fontana della Barcaccia, daterend uit de vroege barokperiode, gebeeldhouwd door Pietro en Gian Lorenzo Bernini. Op de rechterhoek staat het huis van de Engelse dichter John Keats, nu een museum. Op de linkerhoek bevindt zich Babington's Tea Room, opgericht in 1893.</p>
+            <p>Bij het betreden word je overweldigd door de elegantie: geelbruine gebouwen, de fontein van Bernini en het plein dat oprijst richting Trinità dei Monti-kerk. High-fashionmerken als Gucci, Bulgari en Valentino hebben allemaal showrooms hier.</p>
+            <p>Het wereldberoemde plein aan de voet van de Pincio, geboorteplaats van dichters John Keats en Percy Bysshe Shelley, wordt beschouwd als een onschatbaar cultureel juweel en populaire toeristische trekpleister.</p>
+        </div>
+        <a href="#" class="back-to-top">↑ Terug naar inhoud</a>
+    </div>
+
+    <div id="piazza-san-pietro" class="section">
+        <span class="label">Nederlandse Tekst</span>
+        <h2>Piazza San Pietro</h2>
+        <div class="audio-controls">
+            <button onclick="playSection('piazza-san-pietro')">▶ Play</button>
+            <button onclick="stopSpeech()">■ Stop</button>
+            <input type="range" id="seek-piazza-san-pietro" value="0" min="0" max="100" onchange="seekSpeech('piazza-san-pietro', this.value)">
+        </div>
+        <div class="text-content">
+            <p>Het Sint-Pietersplein is niet zomaar een plein, maar een meesterwerk van architectuur en design. Gelegen in Vaticaanstad, recht tegenover de Sint-Pietersbasiliek, is het een absolute aanrader. Ontworpen door Gian Lorenzo Bernini in de 17e eeuw, is het een bewijs van zijn vakmanschap. Het middelpunt is de oude Egyptische obelisk, geplaatst in 1586.</p>
+            <p>De beroemde Toscaanse zuilengalerijen, ook van Bernini, omringen het plein. Ze creëren een gevoel van geborgenheid en omarmen bezoekers. Ze zijn ontworpen om grote menigten te ontvangen. Naast de obelisk staan twee prachtige fonteinen, één van Bernini in 1675 en één van Carlo Maderno in 1613.</p>
+            <p>De esplanade werd in de 17e eeuw door Bernini herontworpen onder paus Alexander VII. Het doel was een binnenplaats creëren waar de paus zijn zegen kon uitspreken. Elk detail diende een doel. De zuilengalerijen gebruiken de Toscaanse Dorische stijl, de eenvoudigste orde van architectuur.</p>
+            <p>Al met al is het Sint-Pietersplein een meesterwerk van architectuur, een bewijs van Bernini's vaardigheid. Het is een plek van schoonheid, geschiedenis en spiritualiteit waar bezoekers de grandeur kunnen ervaren.</p>
+        </div>
+        <a href="#" class="back-to-top">↑ Terug naar inhoud</a>
+    </div>
+
+    <div id="ponte" class="section">
+        <span class="label">Nederlandse Tekst</span>
+        <h2>Ponte Sant'Angelo</h2>
+        <div class="audio-controls">
+            <button onclick="playSection('ponte')">▶ Play</button>
+            <button onclick="stopSpeech()">■ Stop</button>
+            <input type="range" id="seek-ponte" value="0" min="0" max="100" onchange="seekSpeech('ponte', this.value)">
+        </div>
+        <div class="text-content">
+            <p>De Ponte Sant'Angelo, ook bekend als de Aeliaanse Brug of Pons Aelius, is een schitterende Romeinse brug in Rome. Dit architectonische meesterwerk werd in 134 na Christus gebouwd door keizer Hadrianus om het stadscentrum te verbinden met het Mausoleum van Hadrianus, nu Castel Sant'Angelo. De brug beschikt over vijf majestueuze bogen, waarvan er drie origineel Romeins zijn.</p>
+            <p>De brug is bekleed met travertijnmarmer en overspant de Tiber, met een adembenemend uitzicht op Castel Sant'Angelo. In de vroege middeleeuwen stond het bekend als Ponte di San Pietro omdat pelgrims het gebruikten. Onder paus Gregorius I werd het omgedoopt tot Sant'Angelo, geïnspireerd door een legende.</p>
+            <p>De brug speelde een belangrijke rol in het religieuze leven van Rome, vooral tijdens jubeljaren. Een opmerkelijke gebeurtenis was in 1450 toen balustrades instortten onder een grote menigte, met veel doden als gevolg. Naar aanleiding daarvan werd de brug verbreed.</p>
+            <p>Tegenwoordig is Ponte Sant'Angelo een symbool van Rome's rijke geschiedenis. Het is een voetgangerspromenade waar bezoekers kunnen wandelen en genieten van uitzichten op de Tiber en het kasteel.</p>
+        </div>
+        <a href="#" class="back-to-top">↑ Terug naar inhoud</a>
+    </div>
+
+    <div id="trinita" class="section">
+        <span class="label">Nederlandse Tekst</span>
+        <h2>Trinità dei Monti</h2>
+        <div class="audio-controls">
+            <button onclick="playSection('trinita')">▶ Play</button>
+            <button onclick="stopSpeech()">■ Stop</button>
+            <input type="range" id="seek-trinita" value="0" min="0" max="100" onchange="seekSpeech('trinita', this.value)">
+        </div>
+        <div class="text-content">
+            <p>De Trinità dei Monti, ook bekend als de Kerk van de Drievuldigheid van de Bergen, is een buitengewoon architectonisch meesterwerk gelegen bovenop de Spaanse Trappen in Rome. De bouw begon in het begin van de 16e eeuw in gotische stijl, met spitsbooggewelven en een prachtige bronzen omlijsting.</p>
+            <p>Halverwege de 16e eeuw werd een nieuw gebouw aan het gotische schip toegevoegd, met een gevel versierd met twee symmetrische klokkentorens, ontworpen door Giacomo della Porta en Domenico Fontana. De kerk werd in 1585 ingewijd door paus Sixtus V.</p>
+            <p>Een opvallend kenmerk is de trap, ontworpen door Domenico Fontana. Oorspronkelijk bedoeld als eenvoudige straat, zorgde nivellering ervoor dat het lager lag dan de kerkingang. Fontana creëerde een magnifieke trap met twee samenvloeiende trappen.</p>
+            <p>Bezoekers kunnen de imposante architectuur bewonderen en het adembenemende uitzicht over Rome genieten. Het interieur is betoverend met fresco's, sierlijke altaren en sculpturen. De kerk is een absolute aanrader voor wie Rome's culturele schatten wil ontdekken.</p>
+        </div>
+        <a href="#" class="back-to-top">↑ Terug naar inhoud</a>
+    </div>
+
+    <script>
+    let currentUtterance = null;
+    let speechSynth = window.speechSynthesis;
+
+    function getFullText(id) {
+        const section = document.getElementById(id);
+        if (!section) return "";
+        let fullText = "";
+        section.querySelectorAll('.text-content p').forEach(p => {
+            let text = p.innerText.trim();
+            // WICHTIG: Normaliseer whitespace
+            text = text.replace(/\s+/g, ' ').trim();
+            // Verwijder verborgen unicode characters
+            text = text.replace(/[\u200B-\u200D\uFEFF]/g, '');
+            if (text) {
+                fullText += text + " ";
+            }
+        });
+        return fullText.trim();
+    }
+
+    function startSpeaking(text, id, startChar = 0) {
+        currentUtterance = new SpeechSynthesisUtterance(text);
+        currentUtterance.lang = 'nl-NL';
+        currentUtterance.rate = 1.0;
+
+        const fullLength = startChar + text.length;
+
+        currentUtterance.onboundary = function(event) {
+            if (event.name === 'word') {
+                const progress = ((event.charIndex + startChar) / fullLength) * 100;
+                const slider = document.getElementById('seek-' + id);
+                if (slider) slider.value = progress;
+            }
+        };
+
+        currentUtterance.onend = () => {
+            const slider = document.getElementById('seek-' + id);
+            if (slider) slider.value = 100;
+        };
+
+        speechSynth.speak(currentUtterance);
+    }
+
+    function playSection(id) {
+        speechSynth.cancel();
+        speechSynth.speak(new SpeechSynthesisUtterance(""));
+
+        const slider = document.getElementById('seek-' + id);
+        if (slider) slider.value = 0;
+
+        const fullText = getFullText(id);
+        if (!fullText) return;
+
+        setTimeout(() => {
+            speechSynth.cancel();
+            speechSynth.resume();
+            startSpeaking(fullText, id, 0);
+        }, 100);
+    }
+
+    function stopSpeech() {
+        speechSynth.cancel();
+    }
+
+    function seekSpeech(id, value) {
+        speechSynth.cancel();
+
+        const fullText = getFullText(id);
+        if (!fullText) return;
+
+        const startChar = Math.floor((value / 100) * fullText.length);
+        const remainingText = fullText.substring(startChar);
+
+        setTimeout(() => {
+            speechSynth.resume();
+            startSpeaking(remainingText, id, startChar);
+        }, 150);
+    }
+    </script>
+
+<!-- ① ZICHTBARE FOOTER -->
+<div id="jdh-copyright-footer" style="
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  background: rgba(0,0,0,0.82);
+  color: #ccc;
+  font-size: 11px;
+  text-align: center;
+  padding: 4px 8px;
+  z-index: 99999;
+  font-family: sans-serif;
+  letter-spacing: 0.3px;
+  user-select: none;
+">
+  © <span id="jdh-year"></span> Jan den Hollander &nbsp;|&nbsp;
+  <span id="jdh-project-title" style="color:#7eb8f7"></span> &nbsp;|&nbsp;
+  Vrij gebruik · niet-commercieel · ongewijzigd &nbsp;|&nbsp;
+  <span style="color:#aaa; cursor:pointer; text-decoration:underline"
+        onclick="document.getElementById('jdh-modal').style.display='flex'">
+    ℹ️ Licentie
+  </span>
+</div>
+
+<!-- ② LICENTIE MODAL -->
+<div id="jdh-modal" style="
+  display:none; position:fixed; inset:0;
+  background:rgba(0,0,0,0.7);
+  z-index:999999;
+  align-items:center; justify-content:center;
+">
+  <div style="
+    background:#1a1a2e; color:#e0e0e0;
+    border:1px solid #444; border-radius:10px;
+    max-width:480px; width:90%; padding:24px;
+    font-family:sans-serif; font-size:13px; line-height:1.6;
+  ">
+    <h3 style="color:#7eb8f7; margin-top:0">
+      © Jan den Hollander &nbsp;·&nbsp;
+      <span id="jdh-modal-title" style="font-weight:normal;font-size:12px"></span>
+    </h3>
+    <p>Dit hulpmiddel is <strong>gratis</strong> en mag vrij worden gedeeld,
+    uitsluitend <strong>ongewijzigd</strong> en voor
+    <strong>niet-commerciële</strong> doeleinden, met bronvermelding.</p>
+    <p>Commercieel gebruik, wijziging of verkoop is <strong>verboden</strong>
+    zonder schriftelijke toestemming. Het gebruik van naam of projecttitel
+    impliceert geen toestemming en vormt bij commercieel gebruik een
+    zelfstandige auteursrechtinbreuk.</p>
+    <p style="color:#aaa;font-size:11px">
+      This tool is free and may be shared freely, unmodified, for non-commercial
+      purposes only, with attribution. Commercial use, modification or sale is
+      prohibited. Use of the name or project title does not imply consent and
+      constitutes an independent copyright infringement in commercial contexts.<br><br>
+      Quest'opera è gratuita e può essere condivisa liberamente, senza modifiche,
+      per scopi non commerciali, con attribuzione. L'uso commerciale è vietato.
+    </p>
+    <p style="margin-bottom:4px">
+      📧 <a href="mailto:jandenhollander@duck.com"
+            style="color:#7eb8f7">jandenhollander@duck.com</a>
+    </p>
+    <p style="margin-top:4px;margin-bottom:0">
+      🔗 Broncode / Source:
+      <a href="https://github.com/Jan-den-Hollander"
+         target="_blank" style="color:#7eb8f7">github.com/Jan-den-Hollander</a>
+    </p>
+    <button onclick="document.getElementById('jdh-modal').style.display='none'"
+            style="
+              margin-top:16px; padding:8px 20px;
+              background:#7eb8f7; color:#000;
+              border:none; border-radius:6px;
+              cursor:pointer; font-weight:bold;
+            ">Sluiten</button>
+  </div>
+</div>
+
+<!-- ③ INTEGRITEITSCHECK -->
+<script>
+(function() {
+  'use strict';
+  var projectName = document.title || 'Onbekend project';
+  var yearEl = document.getElementById('jdh-year');
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
+  var titleEl = document.getElementById('jdh-project-title');
+  if (titleEl) titleEl.textContent = projectName;
+  var modalTitleEl = document.getElementById('jdh-modal-title');
+  if (modalTitleEl) modalTitleEl.textContent = projectName;
+
+  function blockApp() {
+    document.body.innerHTML = '';
+    document.body.style.cssText =
+      'margin:0;background:#111;display:flex;align-items:center;' +
+      'justify-content:center;height:100vh;font-family:sans-serif;';
+    document.body.innerHTML =
+      '<div style="text-align:center;color:#e55;max-width:440px;padding:24px">' +
+      '<div style="font-size:52px">⛔</div>' +
+      '<h2 style="color:#e55;margin:12px 0 8px">Toegang geblokkeerd</h2>' +
+      '<p style="color:#ddd;font-size:14px">De copyright-informatie van ' +
+      '<strong style="color:#7eb8f7">' + projectName + '</strong> ' +
+      'is verwijderd of gewijzigd.</p>' +
+      '<p style="color:#aaa;font-size:12px">The copyright information of ' +
+      'this application has been removed or modified.<br>' +
+      'La sezione copyright di questa applicazione è stata rimossa o modificata.</p>' +
+      '<hr style="border-color:#333;margin:16px 0">' +
+      '<p style="color:#ccc;font-size:13px">Originele auteur / Original author:</p>' +
+      '<p style="margin:4px 0;font-size:14px">© Jan den Hollander</p>' +
+      '<p style="margin:4px 0">' +
+      '<a href="mailto:jandenhollander@duck.com" ' +
+      'style="color:#7eb8f7;font-size:12px">jandenhollander@duck.com</a></p>' +
+      '<p style="margin:8px 0">' +
+      '<a href="https://github.com/Jan-den-Hollander" target="_blank" ' +
+      'style="color:#7eb8f7;font-size:12px">🔗 github.com/Jan-den-Hollander</a></p>' +
+      '</div>';
+  }
+
+  // ── URL-check: toegestane domeinen voor Storie della Buonanotte ─────
+  var ALLOWED_BN = [
+    'localhost',
+    '127.0.0.1',
+    'jan-den-hollander.github.io',
+    'buonanotte.vercel.app',
+    'buonanotte',
+    'claude.ai',
+    'stackblitz.io',
+    'stackblitz.com'
+  ];
+
+  function domainAllowed() {
+    var host = window.location.hostname.toLowerCase();
+    if (window.location.protocol === 'file:') return true;
+    if (!host || host === '') return true;
+    return ALLOWED_BN.some(function(a) {
+      return host === a || host.endsWith('.' + a) || host.indexOf(a) !== -1;
+    });
+  }
+
+  function warnDomain() {
+    var banner = document.createElement('div');
+    banner.id = 'jdh-domain-warning';
+    banner.style.cssText =
+      'position:fixed;top:0;left:0;right:0;z-index:99998;' +
+      'background:#8a2010;color:#fff;font-family:sans-serif;' +
+      'font-size:12px;text-align:center;padding:8px 12px;line-height:1.5;';
+    banner.innerHTML =
+      '⚠️ <strong>' + projectName + '</strong> draait op een niet-erkend domein ' +
+      '(<em>' + window.location.hostname + '</em>). ' +
+      'Origineel: <a href="https://github.com/Jan-den-Hollander" ' +
+      'target="_blank" style="color:#ffccaa">github.com/Jan-den-Hollander</a> · ' +
+      '<a href="mailto:jandenhollander@duck.com" style="color:#ffccaa">' +
+      'jandenhollander@duck.com</a>';
+    document.body.insertBefore(banner, document.body.firstChild);
+  }
+
+  if (!domainAllowed()) { setTimeout(warnDomain, 800); }
+
+  function checkIntegrity() {
+    var footer = document.getElementById('jdh-copyright-footer');
+    var modal  = document.getElementById('jdh-modal');
+    if (!footer || !modal) { blockApp(); return; }
+    var fs = window.getComputedStyle(footer);
+    if (fs.display === 'none' || fs.visibility === 'hidden' || fs.opacity === '0') {
+      footer.style.cssText += ';display:block!important;visibility:visible!important;opacity:1!important';
+    }
+  }
+
+  checkIntegrity();
+  setInterval(checkIntegrity, 3000);
+
+  var observer = new MutationObserver(function(mutations) {
+    mutations.forEach(function(m) {
+      m.removedNodes.forEach(function(node) {
+        if (node.id === 'jdh-copyright-footer' || node.id === 'jdh-modal') {
+          blockApp();
+        }
+      });
+    });
+  });
+  observer.observe(document.body, { childList: true, subtree: true });
+})();
+</script>
+</body>
+</html>
